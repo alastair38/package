@@ -14,107 +14,239 @@ in their own file.
 
 
 // let's create the function for the custom type
-function custom_post_example() {
+function clg_people() {
 	// creating (registering) the custom type
-	register_post_type( 'custom_type', /* (http://codex.wordpress.org/Function_Reference/register_post_type) */
+	register_post_type( 'people', /* (http://codex.wordpress.org/Function_Reference/register_post_type) */
 	 	// let's now add all the options for this post type
 		array('labels' => array(
-			'name' => __('Custom Types', 'jointstheme'), /* This is the Title of the Group */
-			'singular_name' => __('Custom Post', 'jointstheme'), /* This is the individual type */
-			'all_items' => __('All Custom Posts', 'jointstheme'), /* the all items menu item */
-			'add_new' => __('Add New', 'jointstheme'), /* The add new menu item */
-			'add_new_item' => __('Add New Custom Type', 'jointstheme'), /* Add New Display Title */
+			'name' => __('People', 'jointstheme'), /* This is the Title of the Group */
+			'singular_name' => __('Person', 'jointstheme'), /* This is the individual type */
+			'all_items' => __('All People', 'jointstheme'), /* the all items menu item */
+			'add_new' => __('Add New Person', 'jointstheme'), /* The add new menu item */
+			'add_new_item' => __('Add New Person', 'jointstheme'), /* Add New Display Title */
 			'edit' => __( 'Edit', 'jointstheme' ), /* Edit Dialog */
-			'edit_item' => __('Edit Post Types', 'jointstheme'), /* Edit Display Title */
-			'new_item' => __('New Post Type', 'jointstheme'), /* New Display Title */
-			'view_item' => __('View Post Type', 'jointstheme'), /* View Display Title */
-			'search_items' => __('Search Post Type', 'jointstheme'), /* Search Custom Type Title */
+			'edit_item' => __('Edit Person', 'jointstheme'), /* Edit Display Title */
+			'new_item' => __('New Person', 'jointstheme'), /* New Display Title */
+			'view_item' => __('View Person', 'jointstheme'), /* View Display Title */
+			'search_items' => __('Search People', 'jointstheme'), /* Search Custom Type Title */
 			'not_found' =>  __('Nothing found in the Database.', 'jointstheme'), /* This displays if there are no entries yet */
 			'not_found_in_trash' => __('Nothing found in Trash', 'jointstheme'), /* This displays if there is nothing in the trash */
 			'parent_item_colon' => ''
 			), /* end of arrays */
-			'description' => __( 'This is the example custom post type', 'jointstheme' ), /* Custom Type Description */
+			'description' => __( 'Wherl People', 'jointstheme' ), /* Custom Type Description */
 			'public' => true,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
 			'show_ui' => true,
 			'query_var' => true,
-			'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */
-			'menu_icon' => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', /* the icon for the custom post type menu */
-			'rewrite'	=> array( 'slug' => 'custom_type', 'with_front' => false ), /* you can specify its url slug */
-			'has_archive' => 'custom_type', /* you can rename the slug here */
+			'menu_position' => 6, /* this is what order you want it to appear in on the left hand side menu */
+			'menu_icon' => 'dashicons-id-alt', /* the icon for the custom post type menu */
+			'rewrite'	=> array( 'slug' => 'people', 'with_front' => false ), /* you can specify its url slug */
+			'has_archive' => true, /* you can rename the slug here */
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			/* the next one is important, it tells what's enabled in the post editor */
-			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky')
+			'supports' => array( 'title', 'editor', 'thumbnail', 'author')
 	 	) /* end of options */
 	); /* end of register post type */
+}
+	// adding the function to the Wordpress init
+	add_action( 'init', 'clg_people');
 
-	/* this adds your post categories to your custom post type */
-	register_taxonomy_for_object_type('category', 'custom_type');
-	/* this adds your post tags to your custom post type */
-	register_taxonomy_for_object_type('post_tag', 'custom_type');
+
+if(function_exists("register_field_group"))
+{
+
+
+	register_field_group(array (
+		'id' => 'acf_contact-details',
+		'title' => 'Contact Details',
+		'fields' => array (
+			array (
+				'key' => 'field_5375d9dac440f',
+				'label' => 'Phone',
+				'name' => 'phone_landline',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'min' => '',
+				'max' => '',
+				'step' => '',
+			),
+			array (
+				'key' => 'field_5375da22c4411',
+				'label' => 'Email',
+				'name' => 'email',
+				'type' => 'email',
+				'default_value' => '',
+				'placeholder' => 'yourname@example.com',
+				'prepend' => '',
+				'append' => '',
+			),
+			array (
+				'key' => 'field_5379db07047fd',
+				'label' => 'Twitter',
+				'name' => 'twitter',
+				'type' => 'text',
+				'instructions' => '',
+				'default_value' => '',
+				'placeholder' => 'Enter the full URL for your Twitter profile eg https://twitter.com/YOURPROFILENAME',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_5379db63047fe',
+				'label' => 'LinkedIn',
+				'name' => 'linkedin',
+				'type' => 'text',
+				'instructions' => '',
+				'default_value' => '',
+				'placeholder' => 'Enter the full URL for your LinkedIn profile',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+		),
+		'location' => array (
+				array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'page',
+					'order_no' => 2,
+					'group_no' => 2,
+				),
+			),
+            array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'people',
+					'order_no' => 0,
+					'group_no' => 1,
+				),
+			)
+		),
+		'options' => array (
+			'position' => 'acf_after_title',
+			'layout' => 'default',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+
+	register_field_group(array (
+		'id' => 'acf_location',
+		'title' => 'Location',
+		'fields' => array (
+            array (
+				'key' => 'field_544799529417c',
+				'label' => 'Address',
+				'name' => 'contact_address',
+				'type' => 'textarea',
+				'default_value' => '',
+				'placeholder' => 'Enter your organisation address; You can also add a map by using the location function below',
+				'maxlength' => '',
+				'rows' => '',
+				'formatting' => 'none',
+			),
+			array (
+				'key' => 'field_544775c4bdf17',
+				'label' => 'Map',
+				'name' => 'contact_map',
+				'type' => 'google_map',
+				'center_lat' => '51.5072',
+				'center_lng' => '0.1275',
+				'zoom' => '',
+				'height' => '',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'page',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'default',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+
+	register_field_group(array (
+		'id' => 'acf_slider',
+		'title' => 'Slider',
+		'fields' => array (
+			array (
+				'key' => 'field_544bbed059b54',
+				'label' => 'Logo Image',
+				'name' => 'logo_image',
+				'type' => 'image',
+				'save_format' => 'url',
+				'preview_size' => 'thumbnail',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_544bbef859b55',
+				'label' => 'Slide One',
+				'name' => 'slide_one',
+				'type' => 'textarea',
+				'default_value' => '',
+				'placeholder' => '',
+				'maxlength' => '',
+				'rows' => '',
+				'formatting' => 'br',
+			),
+			array (
+				'key' => 'field_544bbf2559b56',
+				'label' => 'Slide Two',
+				'name' => 'slide_two',
+				'type' => 'textarea',
+				'default_value' => '',
+				'placeholder' => '',
+				'maxlength' => '',
+				'rows' => '',
+				'formatting' => 'br',
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'page',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'acf_after_title',
+			'layout' => 'default',
+			'hide_on_screen' => array (
+				0 => 'the_content',
+				1 => 'excerpt',
+				2 => 'revisions',
+			),
+		),
+		'menu_order' => 0,
+	));
+
 
 }
-
-	// adding the function to the Wordpress init
-	add_action( 'init', 'custom_post_example');
-
-	/*
-	for more information on taxonomies, go here:
-	http://codex.wordpress.org/Function_Reference/register_taxonomy
-	*/
-
-	// now let's add custom categories (these act like categories)
-    register_taxonomy( 'custom_cat',
-    	array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
-    	array('hierarchical' => true,     /* if this is true, it acts like categories */
-    		'labels' => array(
-    			'name' => __( 'Custom Categories', 'jointstheme' ), /* name of the custom taxonomy */
-    			'singular_name' => __( 'Custom Category', 'jointstheme' ), /* single taxonomy name */
-    			'search_items' =>  __( 'Search Custom Categories', 'jointstheme' ), /* search title for taxomony */
-    			'all_items' => __( 'All Custom Categories', 'jointstheme' ), /* all title for taxonomies */
-    			'parent_item' => __( 'Parent Custom Category', 'jointstheme' ), /* parent title for taxonomy */
-    			'parent_item_colon' => __( 'Parent Custom Category:', 'jointstheme' ), /* parent taxonomy title */
-    			'edit_item' => __( 'Edit Custom Category', 'jointstheme' ), /* edit custom taxonomy title */
-    			'update_item' => __( 'Update Custom Category', 'jointstheme' ), /* update title for taxonomy */
-    			'add_new_item' => __( 'Add New Custom Category', 'jointstheme' ), /* add new title for taxonomy */
-    			'new_item_name' => __( 'New Custom Category Name', 'jointstheme' ) /* name title for taxonomy */
-    		),
-    		'show_admin_column' => true,
-    		'show_ui' => true,
-    		'query_var' => true,
-    		'rewrite' => array( 'slug' => 'custom-slug' ),
-    	)
-    );
-
-	// now let's add custom tags (these act like categories)
-    register_taxonomy( 'custom_tag',
-    	array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
-    	array('hierarchical' => false,    /* if this is false, it acts like tags */
-    		'labels' => array(
-    			'name' => __( 'Custom Tags', 'jointstheme' ), /* name of the custom taxonomy */
-    			'singular_name' => __( 'Custom Tag', 'jointstheme' ), /* single taxonomy name */
-    			'search_items' =>  __( 'Search Custom Tags', 'jointstheme' ), /* search title for taxomony */
-    			'all_items' => __( 'All Custom Tags', 'jointstheme' ), /* all title for taxonomies */
-    			'parent_item' => __( 'Parent Custom Tag', 'jointstheme' ), /* parent title for taxonomy */
-    			'parent_item_colon' => __( 'Parent Custom Tag:', 'jointstheme' ), /* parent taxonomy title */
-    			'edit_item' => __( 'Edit Custom Tag', 'jointstheme' ), /* edit custom taxonomy title */
-    			'update_item' => __( 'Update Custom Tag', 'jointstheme' ), /* update title for taxonomy */
-    			'add_new_item' => __( 'Add New Custom Tag', 'jointstheme' ), /* add new title for taxonomy */
-    			'new_item_name' => __( 'New Custom Tag Name', 'jointstheme' ) /* name title for taxonomy */
-    		),
-    		'show_admin_column' => true,
-    		'show_ui' => true,
-    		'query_var' => true,
-    	)
-    );
-
-    /*
-    	looking for custom meta boxes?
-    	check out this fantastic tool:
-    	https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress
-    */
-
 
 ?>
