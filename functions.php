@@ -27,9 +27,8 @@ MENUS & NAVIGATION
 // REGISTER MENUS
 register_nav_menus(
 	array(
-		'top-nav' => __( 'The Top Menu' ),   // main nav in header
-		'main-nav' => __( 'The Main Menu' ),   // main nav in header
-		'footer-links' => __( 'Footer Links' ) // secondary nav in footer
+		'main-nav' => __( 'Main Navigation' ),
+        'footer-links' => __( 'Footer Links' ) // main nav in header
 	)
 );
 
@@ -41,14 +40,13 @@ function joints_main_nav() {
     wp_nav_menu(array(
     	'container' => false,                           // remove nav container
     	'container_class' => '',           // class of container (should you choose to use it)
-    	'menu' => __( 'The Main Menu', 'jointstheme' ),  // nav name
+    	'menu' => __( 'Main Navigation', 'jointstheme' ),  // nav name
     	'menu_class' => '',         // adding custom nav class
     	'theme_location' => 'main-nav',                 // where it's located in the theme
     	'before' => '',                                 // before the menu
         'after' => '',                                  // after the menu
         'link_before' => '',                            // before each link
-        'link_after' => '',                             // after each link
-    	'fallback_cb' => 'joints_main_nav_fallback'      // fallback function
+        'link_after' => ''                             // after each link
 	));
 } /* end joints main nav */
 
@@ -68,24 +66,6 @@ function joints_footer_links() {
     	'fallback_cb' => 'joints_footer_links_fallback'  // fallback function
 	));
 } /* end joints footer link */
-
-// HEADER FALLBACK MENU
-function joints_main_nav_fallback() {
-	wp_page_menu( array(
-		'show_home' => true,
-    	'menu_class' => '',      // adding custom nav class
-		'include'     => '',
-		'exclude'     => '',
-		'echo'        => true,
-        'link_before' => '',                            // before each link
-        'link_after' => ''                             // after each link
-	) );
-}
-
-// FOOTER FALLBACK MENU
-function joints_footer_links_fallback() {
-	/* you can put a default here if you like */
-}
 
 /*********************
 SIDEBARS
@@ -176,6 +156,137 @@ function joints_comments($comment, $args, $depth) {
 		</article>
 	<!-- </li> is added by WordPress automatically -->
 <?php
-} // don't remove this bracket!
+}
+
+function my_default_content( $post_content, $post ) {
+    if( $post->post_type )
+    switch( $post->post_type ) {
+        case 'page':
+        case 'people':
+            $post->comment_status = 'closed';
+        break;
+    }
+    return $post_content;
+}
+add_filter( 'default_content', 'my_default_content', 10, 2 );
+
+/*********************
+CHANGE TITLE BOX TEXT FOR NEW SUBMISSIONS BASED ON CUSTOM POST TYPE
+*********************/
+
+function wpb_change_title_text( $title ){
+     $screen = get_current_screen();
+
+     if  ( 'people' == $screen->post_type ) {
+          $title = 'Enter Person Name';
+     }
+
+     return $title;
+}
+
+add_filter( 'enter_title_here', 'wpb_change_title_text' );
+
+/*********************
+CREATE INITIAL SETUP PAGES
+*********************/
+
+add_action('after_setup_theme', 'create_pages');
+
+function create_pages(){
+    $home_page_id = get_option("home_page_id");
+    if (!$home_page_id) {
+        //create a new page and automatically assign the page template
+        $post1 = array(
+            'post_title' => "Home",
+            'post_content' => "",
+            'post_status' => "publish",
+            'post_type' => 'page',
+        );
+        $postID = wp_insert_post($post1, $error);
+
+        update_post_meta($postID, "_wp_page_template", "home.php");
+        update_option("home_page_id", $postID);
+    }
+    $about_page_id = get_option("about_page_id");
+    if (!$about_page_id) {
+        //create a new page and automatically assign the page template
+        $post1 = array(
+            'post_title' => "About",
+            'post_content' => "",
+            'post_status' => "publish",
+            'post_type' => 'page',
+        );
+        $postID = wp_insert_post($post1, $error);
+
+        update_post_meta($postID, "_wp_page_template", "about.php");
+        update_option("about_page_id", $postID);
+    }
+    $contact_page_id = get_option("contact_page_id");
+    if (!$contact_page_id) {
+        //create a new page and automatically assign the page template
+        $post1 = array(
+            'post_title' => "Contact",
+            'post_content' => "",
+            'post_status' => "publish",
+            'post_type' => 'page',
+        );
+        $postID = wp_insert_post($post1, $error);
+
+        update_post_meta($postID, "_wp_page_template", "contact.php");
+        update_option("contact_page_id", $postID);
+    }
+}
+
+/*********************
+CREATE MENU ITEMS FROM SETUP PAGES AND ASSIGN THESE AS MAIN-NAV
+*********************/
+
+// Check if the menu exists
+$menu_exists = wp_get_nav_menu_object( 'Main Navigation' );
+
+// If it doesn't exist, let's create it.
+if( !$menu_exists){
+    $menu_id = wp_create_nav_menu('Main Navigation');
+
+	// Set up default menu items
+    wp_update_nav_menu_item($menu_id, 0, array(
+        'menu-item-title' =>  __('Home'),
+        'menu-item-object' => 'page',
+        'menu-item-object-id' => get_page_by_path('home')->ID,
+        'menu-item-type' => 'post_type',
+        'menu-item-status' => 'publish'));
+
+    wp_update_nav_menu_item($menu_id, 0, array(
+        'menu-item-title' =>  __('About'),
+        'menu-item-object' => 'page',
+        'menu-item-object-id' => get_page_by_path('about')->ID,
+        'menu-item-type' => 'post_type',
+        'menu-item-status' => 'publish'));
+
+    wp_update_nav_menu_item($menu_id, 0, array(
+        'menu-item-title' =>  __('Contact'),
+        'menu-item-object' => 'page',
+        'menu-item-object-id' => get_page_by_path('contact')->ID,
+        'menu-item-type' => 'post_type',
+        'menu-item-status' => 'publish'));
+
+    $locations = get_theme_mod('nav_menu_locations'); //get the menu locations
+    $locations['main-nav'] = $menu_id; //set our new menu to be the main nav
+    set_theme_mod('nav_menu_locations', $locations); //update
+}
+
+/**********************
+SET STATIC HOMEPAGE OPTION
+**********************/
+
+$homepage = get_page_by_title( 'Home' ); // name of home page here
+
+//NB: get_page_by_title returns an object so $homepage->ID has to be used
+
+if ( $homepage )
+{
+    update_option( 'page_on_front', $homepage->ID );
+    update_option( 'show_on_front', 'page' );
+}
 
 ?>

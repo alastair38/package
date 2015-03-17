@@ -33,7 +33,7 @@ function clg_people() {
 			'not_found_in_trash' => __('Nothing found in Trash', 'jointstheme'), /* This displays if there is nothing in the trash */
 			'parent_item_colon' => ''
 			), /* end of arrays */
-			'description' => __( 'Wherl People', 'jointstheme' ), /* Custom Type Description */
+			'description' => __( 'Organisation People', 'jointstheme' ), /* Custom Type Description */
 			'public' => true,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
