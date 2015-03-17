@@ -15,7 +15,7 @@
 
 <!-- This is the nav that will show for mobile/small devices -->
 <div class="large-12 columns show-for-small-only">
-	<div class="contain-to-grid">
+	<div class="fixed contain-to-grid">
 		<nav class="tab-bar">
 			<section class="middle tab-bar-section">
 				<h1 class="title"><?php bloginfo('name'); ?></h1>

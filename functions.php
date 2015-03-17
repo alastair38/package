@@ -204,7 +204,7 @@ function create_pages(){
         );
         $postID = wp_insert_post($post1, $error);
 
-        update_post_meta($postID, "_wp_page_template", "home.php");
+        update_post_meta($postID, "_wp_page_template", "page.php");
         update_option("home_page_id", $postID);
     }
     $about_page_id = get_option("about_page_id");
@@ -215,10 +215,11 @@ function create_pages(){
             'post_content' => "",
             'post_status' => "publish",
             'post_type' => 'page',
+            'comment_status' => 'closed'
         );
         $postID = wp_insert_post($post1, $error);
 
-        update_post_meta($postID, "_wp_page_template", "about.php");
+        update_post_meta($postID, "_wp_page_template", "page-about.php");
         update_option("about_page_id", $postID);
     }
     $contact_page_id = get_option("contact_page_id");
@@ -232,7 +233,7 @@ function create_pages(){
         );
         $postID = wp_insert_post($post1, $error);
 
-        update_post_meta($postID, "_wp_page_template", "contact.php");
+        update_post_meta($postID, "_wp_page_template", "page-contact.php");
         update_option("contact_page_id", $postID);
     }
 }
@@ -288,5 +289,14 @@ if ( $homepage )
     update_option( 'page_on_front', $homepage->ID );
     update_option( 'show_on_front', 'page' );
 }
+
+/**
+ * force set permalink structure
+ */
+function smartest_set_permalinks() {
+    global $wp_rewrite;
+    $wp_rewrite->set_permalink_structure( '/%postname%/' );// you can change /%postname%/ to any structure
+}
+add_action( 'init', 'smartest_set_permalinks' );
 
 ?>

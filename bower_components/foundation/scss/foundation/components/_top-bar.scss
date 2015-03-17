@@ -14,8 +14,8 @@ $include-html-top-bar-classes: $include-html-classes !default;
 
 // Background color for the top bar
 $topbar-bg-color: none !default; //formally $oil
-$topbar-bg: none !default; //formally $topbar-bg-color
-$topmenu-bg: $oil !default;
+$topbar-bg: none !default;
+$topmenu-bg: $charcoal !default;
 
 // Height and margin
 $topbar-height: rem-calc(45) !default;

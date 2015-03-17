@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Custom Page Example
+Template Name: Contact Page (full width)
 */
 ?>
 
@@ -10,13 +10,11 @@ Template Name: Custom Page Example
 
 				<div id="inner-content" class="row">
 
-				    <div id="main" class="large-8 medium-8 columns first" role="main">
+				    <div id="main" class="large-12 columns first" role="main">
 
 					    <?php get_template_part( 'partials/loop', 'page' ); ?>
 
 				    </div> <!-- end #main -->
-
-				    <?php get_sidebar(); ?>
 
 				</div> <!-- end #inner-content -->
 

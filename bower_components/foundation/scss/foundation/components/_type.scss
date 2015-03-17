@@ -408,9 +408,13 @@ $align-class-breakpoints:
 
     /* Blockquotes */
     blockquote {
+     background: $contrast-color;
       margin: 0 0 $paragraph-margin-bottom;
       padding: $blockquote-padding;
-      border-#{$default-float}: $blockquote-border;
+
+      p {
+          padding-bottom: 0.75rem;
+      }
 
       cite {
         display: block;

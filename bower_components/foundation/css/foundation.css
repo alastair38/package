@@ -4430,7 +4430,7 @@ meta.foundation-mq-topbar {
 /* Wrapped around .top-bar to contain to grid width */
 .contain-to-grid {
   width: 100%;
-  background: #333333; }
+  background: #555555; }
   .contain-to-grid .top-bar {
     margin-bottom: 0; }
 
@@ -5243,9 +5243,11 @@ abbr {
 
 /* Blockquotes */
 blockquote {
+  background: #f2f071;
   margin: 0 0 1.25rem;
-  padding: 0.5625rem 1.25rem 0 1.1875rem;
-  border-left: 1px solid #DDDDDD; }
+  padding: 0.5625rem 1.25rem 0 1.1875rem; }
+  blockquote p {
+    padding-bottom: 0.75rem; }
   blockquote cite {
     display: block;
     font-size: 0.8125rem;

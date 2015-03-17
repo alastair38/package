@@ -115,9 +115,9 @@ if(function_exists("register_field_group"))
 		'location' => array (
 				array (
 				array (
-					'param' => 'post_type',
+					'param' => 'page_template',
 					'operator' => '==',
-					'value' => 'page',
+					'value' => 'page-contact.php',
 					'order_no' => 2,
 					'group_no' => 2,
 				),
@@ -170,9 +170,9 @@ if(function_exists("register_field_group"))
 		'location' => array (
 			array (
 				array (
-					'param' => 'post_type',
+					'param' => 'page_template',
 					'operator' => '==',
-					'value' => 'page',
+					'value' => 'page-contact.php',
 					'order_no' => 0,
 					'group_no' => 0,
 				),
@@ -204,31 +204,27 @@ if(function_exists("register_field_group"))
 				'key' => 'field_544bbef859b55',
 				'label' => 'Slide One',
 				'name' => 'slide_one',
-				'type' => 'textarea',
+				'type' => 'wysiwyg',
 				'default_value' => '',
-				'placeholder' => '',
-				'maxlength' => '',
-				'rows' => '',
-				'formatting' => 'br',
+				'toolbar' => 'full',
+                'media_upload' => 'yes'
 			),
 			array (
 				'key' => 'field_544bbf2559b56',
 				'label' => 'Slide Two',
 				'name' => 'slide_two',
-				'type' => 'textarea',
+				'type' => 'wysiwyg',
 				'default_value' => '',
-				'placeholder' => '',
-				'maxlength' => '',
-				'rows' => '',
-				'formatting' => 'br',
+				'toolbar' => 'full',
+                'media_upload' => 'yes'
 			),
 		),
 		'location' => array (
 			array (
 				array (
-					'param' => 'post_type',
+					'param' => 'page_template',
 					'operator' => '==',
-					'value' => 'page',
+					'value' => 'default',
 					'order_no' => 0,
 					'group_no' => 0,
 				),
