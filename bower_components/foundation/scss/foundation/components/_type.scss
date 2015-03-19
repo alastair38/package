@@ -409,7 +409,7 @@ $align-class-breakpoints:
     /* Blockquotes */
     blockquote {
      background: $contrast-color;
-      margin: 0 0 $paragraph-margin-bottom;
+      margin: 0 1em $paragraph-margin-bottom;
       padding: $blockquote-padding;
 
       p {

@@ -4574,7 +4574,7 @@ meta.foundation-mq-topbar {
       font-weight: normal;
       text-transform: none; }
       .top-bar-section ul li > a:focus {
-        background: #00536e;
+        background: #3a3a3a;
         color: #FFFFFF; }
       .top-bar-section ul li > a.button {
         font-size: 0.9375rem;
@@ -4663,17 +4663,17 @@ meta.foundation-mq-topbar {
         .top-bar-section ul li > button.warning:hover, .top-bar-section ul li > button.warning:focus {
           color: #FFFFFF; }
     .top-bar-section ul li:hover:not(.has-form) > a {
-      background: #00536e;
+      background: #3a3a3a;
       color: #FFFFFF; }
     .top-bar-section ul li.active > a {
-      background: #006080;
+      background: #444444;
       color: #FFFFFF;
       text-decoration: underline; }
       .top-bar-section ul li.active > a:hover {
-        background: #00536e;
+        background: #3a3a3a;
         color: #FFFFFF; }
       .top-bar-section ul li.active > a:focus {
-        background: #00536e;
+        background: #3a3a3a;
         color: #FFFFFF; }
   .top-bar-section .has-form {
     padding: 0.9375rem; }
@@ -4742,7 +4742,7 @@ meta.foundation-mq-topbar {
       padding: 8px 0.9375rem 2px;
       margin-bottom: 0;
       text-transform: uppercase;
-      color: #006080;
+      color: #444444;
       font-weight: bold;
       font-size: 0.625rem; }
 
@@ -5244,7 +5244,7 @@ abbr {
 /* Blockquotes */
 blockquote {
   background: #f2f071;
-  margin: 0 0 1.25rem;
+  margin: 0 1em 1.25rem;
   padding: 0.5625rem 1.25rem 0 1.1875rem; }
   blockquote p {
     padding-bottom: 0.75rem; }

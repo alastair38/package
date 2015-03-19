@@ -154,7 +154,7 @@ if(function_exists("register_field_group"))
 				'placeholder' => 'Enter your organisation address; You can also add a map by using the location function below',
 				'maxlength' => '',
 				'rows' => '',
-				'formatting' => 'none',
+				'formatting' => 'br',
 			),
 			array (
 				'key' => 'field_544775c4bdf17',
@@ -225,6 +225,15 @@ if(function_exists("register_field_group"))
 					'param' => 'page_template',
 					'operator' => '==',
 					'value' => 'default',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+            array (
+				array (
+					'param' => 'page_template',
+					'operator' => '==',
+					'value' => 'page-home-sidebar.php',
 					'order_no' => 0,
 					'group_no' => 0,
 				),

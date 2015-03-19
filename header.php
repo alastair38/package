@@ -52,6 +52,8 @@
 
 							 <?php get_template_part( 'partials/nav', 'main-offcanvas' ); ?>
 
+                            <!-- Commented out accessible modal for the timebeing
+
                             <button id="accessible">&#63;</button>
 
                             <div id="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" role="dialog">
@@ -60,14 +62,18 @@
                                 </div>
                                 <h1 id="modalTitle">Accessibility Tips</h1>
 
-                                <?php joints_main_nav(); ?>
+
 
                                 <button id="modalCloseButton" class="modalCloseButton" title="Close Accessibility Tips"><span id="cancel">Close</span></button>
 
                             </div>
                             <div id="modalOverlay" tabindex="-1"></div>
 
+                              -->
+
                             <button href="#" class="scrollToTop">Back To Top</button>
+
+
 
 						</div> <!-- end #inner-header -->
 

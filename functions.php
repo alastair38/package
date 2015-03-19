@@ -13,8 +13,6 @@ include_once(get_template_directory().'/bower_components/acf/acf.php' );
 
 require_once(get_template_directory().'/library/custom-post-type.php'); // you can disable this if you like
 
-include_once(get_template_directory().'/bower_components/wpas/wpas.php' );
-
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once(get_template_directory().'/library/admin.php');
 
@@ -236,6 +234,20 @@ function create_pages(){
         update_post_meta($postID, "_wp_page_template", "page-contact.php");
         update_option("contact_page_id", $postID);
     }
+    $blog_page_id = get_option("blog_page_id");
+    if (!$blog_page_id) {
+        //create a new page and automatically assign the page template
+        $post1 = array(
+            'post_title' => "Blog",
+            'post_content' => "",
+            'post_status' => "publish",
+            'post_type' => 'page',
+        );
+        $postID = wp_insert_post($post1, $error);
+
+        update_post_meta($postID, "_wp_page_template", "index.php");
+        update_option("blog_page_id", $postID);
+    }
 }
 
 /*********************
@@ -265,6 +277,13 @@ if( !$menu_exists){
         'menu-item-status' => 'publish'));
 
     wp_update_nav_menu_item($menu_id, 0, array(
+        'menu-item-title' =>  __('Blog'),
+        'menu-item-object' => 'page',
+        'menu-item-object-id' => get_page_by_path('blog')->ID,
+        'menu-item-type' => 'post_type',
+        'menu-item-status' => 'publish'));
+
+    wp_update_nav_menu_item($menu_id, 0, array(
         'menu-item-title' =>  __('Contact'),
         'menu-item-object' => 'page',
         'menu-item-object-id' => get_page_by_path('contact')->ID,
@@ -276,8 +295,51 @@ if( !$menu_exists){
     set_theme_mod('nav_menu_locations', $locations); //update
 }
 
+
 /**********************
-SET STATIC HOMEPAGE OPTION
+CREATE BLOG CATEGORIES THAT MAY BE OF USE
+**********************/
+
+function insert_category() {
+	wp_insert_term(
+		'News',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'news'
+		)
+	);
+    wp_insert_term(
+		'Events',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'events'
+		)
+	);
+}
+add_action( 'after_setup_theme', 'insert_category' );
+
+
+// unregister all widgets
+ function unregister_default_widgets() {
+     unregister_widget('WP_Widget_Pages');
+     unregister_widget('WP_Widget_Calendar');
+     unregister_widget('WP_Widget_Archives');
+     unregister_widget('WP_Widget_Links');
+     unregister_widget('WP_Widget_Meta');
+     unregister_widget('WP_Widget_Text');
+     unregister_widget('WP_Widget_Recent_Posts');
+     unregister_widget('WP_Widget_Recent_Comments');
+     unregister_widget('WP_Widget_RSS');
+     unregister_widget('WP_Widget_Tag_Cloud');
+     unregister_widget('WP_Nav_Menu_Widget');
+     unregister_widget('Twenty_Eleven_Ephemera_Widget');
+ }
+ add_action('widgets_init', 'unregister_default_widgets', 11);
+
+/**********************
+SET STATIC HOMEPAGE AND BLOG PAGE OPTIONS
 **********************/
 
 $homepage = get_page_by_title( 'Home' ); // name of home page here
@@ -290,9 +352,17 @@ if ( $homepage )
     update_option( 'show_on_front', 'page' );
 }
 
-/**
- * force set permalink structure
- */
+$blog   = get_page_by_title( 'Blog' );
+
+if ( $homepage )
+{
+update_option( 'page_for_posts', $blog->ID );
+}
+
+/**********************
+FORCE PERMALINK STRUCTURE
+**********************/
+
 function smartest_set_permalinks() {
     global $wp_rewrite;
     $wp_rewrite->set_permalink_structure( '/%postname%/' );// you can change /%postname%/ to any structure

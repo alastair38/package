@@ -2,13 +2,13 @@
 
 			<div id="content">
 
-				<div id="inner-content" class="row">
+				<div id="inner-content" class="">
 
 				    <div id="main" class="large-8 medium-8 columns first" role="main">
 
 					    <?php if (is_category()) { ?>
 						    <h1>
-							    <span>Topic:</span> <?php single_cat_title(); ?>
+							    <?php single_cat_title(); ?>
 					    	</h1>
 
 					    <?php } elseif (is_tag()) { ?>

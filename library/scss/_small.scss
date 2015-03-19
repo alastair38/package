@@ -197,6 +197,114 @@ LAYOUT & GRID STYLES
     font-weight: 100;
 }
 
+.blog article {
+    position:relative;
+    background: #fafafa;
+    padding: 1em; }
+
+.blog .article-header img {
+    float: right;
+}
+
+#about, #contact, #news {
+    text-align: center;
+    padding: 1em;
+    & a {
+        position: relative;
+        color: $charcoal;
+        width: 80%;
+        font-size: 2.25em;
+        display: inline-block;
+        padding: .5em;
+        transition: 1s;
+    }
+    i {
+        font-size: .85em;
+        padding-left: 5px;
+    }
+    & a:focus,
+    a:hover {
+    }
+}
+
+#about a {
+    background: $contrast-color;
+}
+
+#contact a {
+    background: lightblue;
+}
+
+#news a {
+    background: pink;
+}
+
+
+#sidebar1 {
+    border-left: 1px solid $gainsboro;
+}
+
+ul#contact-details  {
+    margin: 1em 0 0 0;
+    text-align: center;
+}
+
+#contact-details li {
+    display: inline-block;
+    padding: 0em 0.25em;
+    font-size: 80%;
+    transition: 1s;
+    a:focus,
+    a:hover {
+        color: $jet;
+    }
+}
+
+.address-phone {
+    background: $charcoal;
+    color: $white;
+    width: 30%;
+    height: 300px;
+    float: left;
+    padding: 1em;
+    h5 {
+        background: $white;
+        text-align: center;
+        margin-top: .5em;
+    }
+}
+
+.map img {
+    width: 70%;
+    height: 300px;
+    float:right;
+}
+
+.map span {
+    opacity: 0;
+}
+
+a:focus + span  {
+    opacity: 1;
+    background: $charcoal;
+    color: $white;
+    text-align: center;
+    display: block;
+    padding: 5px;
+}
+
+#contact-details i {
+    font-size: 210%;
+    background: $white;
+    border-radius: 50%;
+    display: block;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+}
+
+
+
 /*********************
 Scroll to top button
 *********************/
@@ -213,7 +321,7 @@ Scroll to top button
 	text-decoration: none;
 	position:fixed;
 	bottom:20px;
-	right:45%;
+	right:1%;
 	display:none;
     z-index: 11;
 }
@@ -840,7 +948,15 @@ FOOTER STYLES
 	} /* end .footer-links */
 
 
-	.copyright { }
+	p.source-org.copyright {
+        position: fixed;
+        height: 30px;
+        bottom:-20px;
+        left:0;
+        right:0;
+        text-align: center;
+        background: rgba(255,255,255,.5)
+}
 
 /*********************
 FOUNDATION STYLES

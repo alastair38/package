@@ -1,3 +1,9 @@
+<?php
+/*
+Template Name: Alternative Home (w/sidebar)
+*/
+?>
+
 <?php get_header();
 
 /* add default image to theme files and load it from template directory <?php echo get_template_directory_uri(); ?>/default.png */
@@ -13,33 +19,16 @@ else
 ?>
 				<div id="inner-content" class="row">
 
-				    <div id="main" class="large-12 columns" role="main">
+				    <div id="main" class="large-8 medium-8 columns" role="main">
 
                      <?php get_template_part( 'partials/loop', 'slider' ); ?>
 
     				</div> <!-- end #main -->
 
+    				 <?php get_sidebar(); ?>
+
 				</div> <!-- end #inner-content -->
 
 			</div> <!-- end #content -->
-
-    				<?php
-
-// The Query
-$page = get_page_by_path( 'about' );
-
-echo '<div id="about" class="large-4 columns"><a href="' . $page->guid . '">' . $page->post_title . '<i class="fi-torsos-all"></i></a></div>';
-
-$page = get_page_by_path( 'contact' );
-
-echo '<div id="contact" class="large-4 columns"><a href="' . $page->guid . '">' . $page->post_title . '<i class="fi-mail"></i></a></div>';
-
-$page = get_page_by_path( 'blog' );
-
-echo '<div id="news" class="large-4 columns"><a href="' . $page->guid . '">' . $page->post_title . '<i class="fi-rss"></i></a></div>';
-
-?>
-
-
 
 <?php get_footer(); ?>

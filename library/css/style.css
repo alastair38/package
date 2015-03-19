@@ -5014,7 +5014,7 @@ meta.foundation-mq-topbar {
       font-weight: normal;
       text-transform: none; }
       .top-bar-section ul li > a:focus {
-        background: #00536e;
+        background: #3a3a3a;
         color: #FFFFFF; }
       .top-bar-section ul li > a.button {
         font-size: 0.9375rem;
@@ -5103,17 +5103,17 @@ meta.foundation-mq-topbar {
         .top-bar-section ul li > button.warning:hover, .top-bar-section ul li > button.warning:focus {
           color: #FFFFFF; }
     .top-bar-section ul li:hover:not(.has-form) > a {
-      background: #00536e;
+      background: #3a3a3a;
       color: #FFFFFF; }
     .top-bar-section ul li.active > a {
-      background: #006080;
+      background: #444444;
       color: #FFFFFF;
       text-decoration: underline; }
       .top-bar-section ul li.active > a:hover {
-        background: #00536e;
+        background: #3a3a3a;
         color: #FFFFFF; }
       .top-bar-section ul li.active > a:focus {
-        background: #00536e;
+        background: #3a3a3a;
         color: #FFFFFF; }
   .top-bar-section .has-form {
     padding: 0.9375rem; }
@@ -5182,7 +5182,7 @@ meta.foundation-mq-topbar {
       padding: 8px 0.9375rem 2px;
       margin-bottom: 0;
       text-transform: uppercase;
-      color: #006080;
+      color: #444444;
       font-weight: bold;
       font-size: 0.625rem; }
 
@@ -5684,7 +5684,7 @@ abbr {
 /* Blockquotes */
 blockquote {
   background: #f2f071;
-  margin: 0 0 1.25rem;
+  margin: 0 1em 1.25rem;
   padding: 0.5625rem 1.25rem 0 1.1875rem; }
   blockquote p {
     padding-bottom: 0.75rem; }
@@ -6924,6 +6924,91 @@ LAYOUT & GRID STYLES
   color: #555555;
   font-weight: 100; }
 
+.blog article {
+  position: relative;
+  background: #fafafa;
+  padding: 1em; }
+
+.blog .article-header img {
+  float: right; }
+
+#about, #contact, #news {
+  text-align: center;
+  padding: 1em; }
+  #about a, #contact a, #news a {
+    position: relative;
+    color: #555555;
+    width: 80%;
+    font-size: 2.25em;
+    display: inline-block;
+    padding: .5em;
+    transition: 1s; }
+  #about i, #contact i, #news i {
+    font-size: .85em;
+    padding-left: 5px; }
+
+#about a {
+  background: #f2f071; }
+
+#contact a {
+  background: lightblue; }
+
+#news a {
+  background: pink; }
+
+#sidebar1 {
+  border-left: 1px solid #DDDDDD; }
+
+ul#contact-details {
+  margin: 1em 0 0 0;
+  text-align: center; }
+
+#contact-details li {
+  display: inline-block;
+  padding: 0em 0.25em;
+  font-size: 80%;
+  transition: 1s; }
+  #contact-details li a:focus,
+  #contact-details li a:hover {
+    color: #222222; }
+
+.address-phone {
+  background: #555555;
+  color: #FFFFFF;
+  width: 30%;
+  height: 300px;
+  float: left;
+  padding: 1em; }
+  .address-phone h5 {
+    background: #FFFFFF;
+    text-align: center;
+    margin-top: .5em; }
+
+.map img {
+  width: 70%;
+  height: 300px;
+  float: right; }
+
+.map span {
+  opacity: 0; }
+
+a:focus + span {
+  opacity: 1;
+  background: #555555;
+  color: #FFFFFF;
+  text-align: center;
+  display: block;
+  padding: 5px; }
+
+#contact-details i {
+  font-size: 210%;
+  background: #FFFFFF;
+  border-radius: 50%;
+  display: block;
+  width: 35px;
+  height: 35px;
+  line-height: 35px; }
+
 /*********************
 Scroll to top button
 *********************/
@@ -6939,7 +7024,7 @@ Scroll to top button
   text-decoration: none;
   position: fixed;
   bottom: 20px;
-  right: 45%;
+  right: 1%;
   display: none;
   z-index: 11; }
 
@@ -7268,6 +7353,15 @@ override these styles for the desktop
 view.
 */
 /* end .footer-links */
+p.source-org.copyright {
+  position: fixed;
+  height: 30px;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5); }
+
 /*********************
 FOUNDATION STYLES
 *********************/
@@ -7299,8 +7393,8 @@ MEDIUM
   POSTS & CONTENT STYLES
   *********************/
   #main {
-    border-right: 1px solid #ddd;
-    border-left: 1px solid #ddd;
+    border-right: 0px solid #ddd;
+    border-left: 0px solid #ddd;
     padding: 0 3em; }
 
   /* entry content */

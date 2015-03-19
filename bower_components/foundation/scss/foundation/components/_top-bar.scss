@@ -35,7 +35,7 @@ $topbar-link-font-size: rem-calc(15) !default;
 $topbar-link-hover-lightness: -10% !default; // Darken by 10%
 $topbar-link-bg: none !default; //formally $topbar-bg-color
 $topbar-link-bg-hover: none !default; //formally $primary-color
-$topbar-link-bg-color-hover: $primary-color !default;
+$topbar-link-bg-color-hover: $tuatara !default;
 $topbar-link-bg-active: none !default;
 $topbar-link-bg-active-hover: scale-color(transparent, $lightness: -14%) !default;
 $topbar-link-font-family: $body-font-family !default;
@@ -57,7 +57,7 @@ $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: $white !default;
 $topbar-dropdown-toggle-alpha: 0.4 !default;
 
-$topbar-dropdown-label-color: $primary-color !default;
+$topbar-dropdown-label-color: $tuatara !default;
 $topbar-dropdown-label-text-transform: uppercase !default;
 $topbar-dropdown-label-font-weight: $font-weight-bold !default;
 $topbar-dropdown-label-font-size: rem-calc(10) !default;
@@ -327,7 +327,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
           text-transform: $topbar-link-text-transform;
 
          &:focus{
-            background: scale-color($primary-color, $lightness: -14%);
+            background: scale-color($tuatara, $lightness: -14%);
             color: $topbar-link-color-active-hover;
           }
 
@@ -357,21 +357,21 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
         // Apply the hover link color when it has that class
         &:hover:not(.has-form) > a {
-          background: scale-color($primary-color, $lightness: -14%);
+          background: scale-color($tuatara, $lightness: -14%);
           color: $topbar-link-color-hover;
         }
 
         // Apply the active link color when it has that class
         &.active > a {
-          background: $primary-color;
+          background: $tuatara;
           color: $topbar-link-color-active;
           text-decoration: underline;
           &:hover{
-            background: scale-color($primary-color, $lightness: -14%);
+            background: scale-color($tuatara, $lightness: -14%);
             color: $topbar-link-color-active-hover;
           }
           &:focus{
-            background: scale-color($primary-color, $lightness: -14%);
+            background: scale-color($tuatara, $lightness: -14%);
             color: $topbar-link-color-active-hover;
           }
         }
