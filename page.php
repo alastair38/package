@@ -1,14 +1,12 @@
 <?php get_header();
 
-/* add default image to theme files and load it from template directory <?php echo get_template_directory_uri(); ?>/default.png */
-
 if( get_field('logo_image') )
 {
     echo '<div id="content" style="background: url(' . get_field('logo_image') . '); background-position: center; background-size: contain;">';
 }
 else
 {
-    echo '<div id="content" style="background: url(https://ununsplash.imgix.net/photo-1423753623104-718aaace6772?q=75&fm=jpg&s=1ffa61419561b5c796bca3158e7c704c); background-position: center; background-size: cover;">';
+    echo '<div id="content" style="background: url(' . get_template_directory_uri() . '/library/images/background.jpg); background-position: center; background-size: cover;">';
 }
 ?>
 				<div id="inner-content" class="row">
@@ -27,19 +25,44 @@ else
 
 // The Query
 $page = get_page_by_path( 'about' );
+$permalink = get_permalink($page->ID);
 
-echo '<div id="about" class="large-4 columns"><a href="' . $page->guid . '">' . $page->post_title . '<i class="fi-torsos-all"></i></a></div>';
+echo '<div id="about" class="large-4 columns"><a href="' . $permalink . '">' . $page->post_title . '<i class="fi-torsos-all"></i></a></div>';
 
 $page = get_page_by_path( 'contact' );
+$permalink = get_permalink($page->ID);
 
-echo '<div id="contact" class="large-4 columns"><a href="' . $page->guid . '">' . $page->post_title . '<i class="fi-mail"></i></a></div>';
+echo '<div id="contact" class="large-4 columns"><a href="' . $permalink . '">' . $page->post_title . '<i class="fi-mail"></i></a></div>';
 
 $page = get_page_by_path( 'blog' );
+$permalink = get_permalink($page->ID);
 
-echo '<div id="news" class="large-4 columns"><a href="' . $page->guid . '">' . $page->post_title . '<i class="fi-rss"></i></a></div>';
+echo '<div id="news" class="large-4 columns"><a href="' . $permalink . '">' . $page->post_title . '<i class="fi-rss"></i></a></div>';
 
 ?>
 
+<?php
+
+$args = array(
+	'post_type' => 'post',
+    'posts_per_page' => 1
+);
+// The Query
+$the_query = new WP_Query( $args );
 
 
-<?php get_footer(); ?>
+// The Loop
+if ( $the_query->have_posts() ) {
+	echo '<div class="latest-posts large-12 columns"><h3>Latest News</h3>';
+	while ( $the_query->have_posts() ) {
+		$the_query->the_post();
+		echo '<p>' . get_the_time("j.m.y") . '</p><h5><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h5>' . get_the_content();
+	}
+	echo '</div>';
+} else {
+	// no posts found
+}
+/* Restore original Post Data */
+wp_reset_postdata();
+
+get_footer(); ?>

@@ -22,7 +22,7 @@
 			<article id="post-<?php the_ID(); ?>" <?php post_class(''); ?> role="article">
 
 				<section class="featured-image" itemprop="articleBody">
-					<?php the_post_thumbnail('full'); ?>
+					<?php the_post_thumbnail('full', array('itemprop' => 'image')); ?>
 				</section> <!-- end article section -->
 
 				<header class="article-header">

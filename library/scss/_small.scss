@@ -197,33 +197,45 @@ LAYOUT & GRID STYLES
     font-weight: 100;
 }
 
-.blog article {
+.people-title {
+    color: $charcoal;
+    font-weight: 100;
+    margin-bottom: .5em;
+}
+
+.blog article,
+.archive article {
     position:relative;
     background: #fafafa;
     padding: 1em; }
 
-.blog .article-header img {
+.blog .article-header img,
+.archive .article-header img {
     float: right;
 }
 
 #about, #contact, #news {
     text-align: center;
     padding: 1em;
+    margin-top: 1em;
     & a {
         position: relative;
         color: $charcoal;
         width: 80%;
         font-size: 2.25em;
+        border-bottom: 5px solid rgba(255,255,255,.5);
         display: inline-block;
-        padding: .5em;
         transition: 1s;
     }
     i {
         font-size: .85em;
         padding-left: 5px;
+        transition: 1s;
     }
-    & a:focus,
-    a:hover {
+    & a:focus > i,
+    a:hover > i {
+        color: $white;
+        transition: 1s;
     }
 }
 
@@ -239,6 +251,25 @@ LAYOUT & GRID STYLES
     background: pink;
 }
 
+.latest-posts.large-12.columns {
+    padding: 1em 4em;
+    text-align: center;
+    margin-bottom: 3em;
+    h5 {
+        display: inline-block;
+        padding: 0 0.5em 0 0;
+    }
+    h3 {
+        font-weight: 100;
+        border-bottom: 1px solid $charcoal;
+        display: inline-block;
+        width: auto;
+        margin: 0 0 0.5em 0;
+    }
+    p {
+        margin-bottom: 0;
+    }
+}
 
 #sidebar1 {
     border-left: 1px solid $gainsboro;
@@ -303,6 +334,24 @@ a:focus + span  {
     line-height: 35px;
 }
 
+.person-contact {
+    background: $charcoal;
+    color: $white;
+    padding: 0 0 1em 0;
+    text-align: center;
+    }
+
+.person-contact h5 {
+    background: $white;
+    width: 80%;
+    margin: 1em auto;
+}
+
+.people-details h4 {
+    display: inline-block;
+    padding: 0 0 0 .5em;
+}
+
 
 
 /*********************
@@ -310,15 +359,14 @@ Scroll to top button
 *********************/
 
 .scrollToTop{
-	width:10%;
-	height:auto;
-	padding:10px;
+    background: transparent;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23999999'%2F%3E%3C%2Fsvg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotate(270deg);
     margin: 0;
+    padding: 20px;
 	text-align:center;
-	background: $contrast-color;
-	font-weight: bold;
-	color: #444;
-	text-decoration: none;
 	position:fixed;
 	bottom:20px;
 	right:1%;
@@ -328,8 +376,10 @@ Scroll to top button
 
 .scrollToTop:hover, scrollToTop:focus {
 	text-decoration:none;
-    color: $oil;
-    background: scale-color($contrast-color, $lightness: -14%);
+     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotate(270deg);
 }
 
 /*********************
@@ -949,13 +999,7 @@ FOOTER STYLES
 
 
 	p.source-org.copyright {
-        position: fixed;
-        height: 30px;
-        bottom:-20px;
-        left:0;
-        right:0;
         text-align: center;
-        background: rgba(255,255,255,.5)
 }
 
 /*********************

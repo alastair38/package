@@ -338,6 +338,48 @@ add_action( 'after_setup_theme', 'insert_category' );
  }
  add_action('widgets_init', 'unregister_default_widgets', 11);
 
+
+/**********************
+GENERAL SCHEMA.ORG PAGE FUNCTION
+**********************/
+
+function html_tag_schema() {
+    $schema = 'http://schema.org/';
+
+    // Is single post
+    if(is_single()) {
+        $type = "Article";
+    }
+
+    // Is author page
+    elseif( is_author() || is_page_template ( 'single-people.php' )) {
+        $type = 'ProfilePage';
+    }
+
+    // Contact form page
+   elseif ( is_page_template( 'page-contact.php' ) )
+    {
+        $type = 'ContactPage';
+    }
+
+     // About page
+   elseif ( is_page_template( 'page-about.php' ) )
+    {
+        $type = 'AboutPage';
+    }
+
+    // Is search results page
+    elseif( is_search() ) {
+        $type = 'SearchResultsPage';
+    }
+
+    else {
+        $type = 'WebPage';
+    }
+
+    echo 'itemscope="itemscope" itemtype="' . $schema . $type . '"';
+}
+
 /**********************
 SET STATIC HOMEPAGE AND BLOG PAGE OPTIONS
 **********************/

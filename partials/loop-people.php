@@ -19,14 +19,15 @@
                           <div id="aside" class="large-4 columns first" role="aside">
 
 
-                        <h3 class="people-title">Team Members</h3>
+                        <h1 class="people-title">Staff</h1>
                         <?php foreach( $persons as $person ): ?>
 
 
-                            <div class="people-details">
+                            <div class="people-details" itemscope itemtype="http://schema.org/Person">
                             <?php $permalink = get_permalink($person->ID);?>
-                             <h3><a href="<?php echo $permalink;?>"><?php echo get_the_title( $person->ID ); ?></a></h3>
-                            <?php echo get_the_post_thumbnail( $person->ID ); ?>
+
+                            <?php echo get_the_post_thumbnail( $person->ID, array(100,100), array('itemprop' => 'image', 'class' => 'alignleft') ); ?>
+                            <h4><a href="<?php echo $permalink;?>" itemprop="name"><?php echo $person->post_title; ?></a></h4>
                             </div>
                             </div>
 

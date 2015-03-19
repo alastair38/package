@@ -7,6 +7,7 @@
 		    			</div>
 			        <div class="large-12 medium-12 columns">
 								<p class="source-org copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>.</p>
+								  <button href="#" class="scrollToTop"></button>
 							</div>
 						</div> <!-- end #inner-footer -->
 					</footer> <!-- end .footer -->
