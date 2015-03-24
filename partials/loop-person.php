@@ -10,6 +10,9 @@
 		<?php get_template_part( 'partials/content', 'contact' ); ?>
         </div>
         <div class="large-8 columns">
+         <?php if( get_field('job_title') ): ?>
+        <h6 itemprop="jobTitle"><?php echo esc_html( get_field('job_title') ); ?></h6>
+         <?php endif; ?>
 		<?php the_content(); ?>
         </div>
 

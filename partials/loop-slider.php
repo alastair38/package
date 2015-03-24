@@ -1,17 +1,18 @@
 
                        	<div class="slider-wrapper">
 
-                            <div class="controls">
-                                <button class="prev"></button>
 
-                                <button class="next"></button>
+                            <div class="slider" id="frontPagecontent">
+                                <div>
+                                  <?php echo wp_kses (get_field('slide_one'), array('br' => array(),'p' => array())); ?>
+                                </div>
+                                <div>
+                                   <?php echo wp_kses (get_field('slide_two'), array('br' => array(),'p' => array())); ?>
+                                </div>
                             </div>
-                            <div class="slider" id="testslides">
-                                <div>
-                                   <?php the_field('slide_one'); ?>
-                                </div>
-                                <div>
-                                    <?php the_field('slide_two'); ?>
-                                </div>
+                                <div class="controls">
+                                <button aria-hidden="true" class="next"></button>
+                                <button aria-hidden="true" class="prev"></button>
+
                             </div>
                         </div>

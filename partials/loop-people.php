@@ -16,18 +16,27 @@
 
                           </div> <!-- end #main -->
 
-                          <div id="aside" class="large-4 columns first" role="aside">
+                          <div id="aside" class="large-4 columns first" role="complementary">
 
 
-                        <h1 class="people-title">Staff</h1>
+                        <h1 class="people-title">Our Staff</h1>
                         <?php foreach( $persons as $person ): ?>
 
 
                             <div class="people-details" itemscope itemtype="http://schema.org/Person">
                             <?php $permalink = get_permalink($person->ID);?>
 
-                            <?php echo get_the_post_thumbnail( $person->ID, array(100,100), array('itemprop' => 'image', 'class' => 'alignleft') ); ?>
-                            <h4><a href="<?php echo $permalink;?>" itemprop="name"><?php echo $person->post_title; ?></a></h4>
+                            <?php echo get_the_post_thumbnail( $person->ID, array(50,50), array('itemprop' => 'image', 'class' => 'alignleft') ); ?>
+                            <h6><a href="<?php echo $permalink;?>" itemprop="name"><?php echo $person->post_title; ?></a></h6>
+                            <?php
+                            $job = get_field('job_title', $person->ID);
+                            if( $job ): ?>
+                             <span itemprop="jobTitle"> / <?php echo esc_html( $job ); ?></span>
+                             <?php endif; ?>
+
+
+
+
                             </div>
                             </div>
 

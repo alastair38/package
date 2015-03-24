@@ -8,7 +8,7 @@ Template Name: About Page (full width)
 
 			<div id="content">
 
-				<div id="inner-content" class="">
+				<div id="inner-content" class="row">
 
 				    <?php get_template_part( 'partials/loop', 'people' ); ?>
 

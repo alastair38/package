@@ -5082,7 +5082,12 @@ a {
 
 .article-header a:focus,
 .entry-content a:focus,
-#sidebar1 a:focus {
+#sidebar1 a:focus,
+.article-header a:focus,
+#aside a:focus,
+.latest-posts a:focus,
+.comment-author a:focus,
+.comments-logged-in-as a:focus {
   padding-bottom: 3px;
   border-bottom: 2px solid #444; }
 

@@ -6,13 +6,15 @@
     </header> <!-- end article header -->
 
     <section class="entry-content" itemprop="articleBody">
-		<?php the_post_thumbnail('full', array('itemprop' => 'image')); ?>
+		<?php the_post_thumbnail('large', array('itemprop' => 'image', 'class' => 'alignright')); ?>
 		<?php the_content(); ?>
 	</section> <!-- end article section -->
 
-	<footer class="article-footer">
-		<p class="tags"><?php the_tags('<span class="tags-title">' . __('Tags:', 'jointstheme') . '</span> ', ', ', ''); ?></p>	</footer> <!-- end article footer -->
+	<footer class="large-12 columns article-footer">
+		<p class="tags"><?php the_tags('<span class="tags-title">' . __('Tags:', 'jointstheme') . '</span> ', ', ', ''); ?></p>
+
 
 	<?php comments_template(); ?>
+    </footer> <!-- end article footer -->
 
 </article> <!-- end article -->

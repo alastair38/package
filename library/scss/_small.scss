@@ -191,6 +191,15 @@ style a page via class
 LAYOUT & GRID STYLES
 *********************/
 
+.single-post .entry-content img {
+    width: 50%;
+}
+
+.large-12.columns.article-footer {
+    border-top: 1px solid $gainsboro;
+    margin-top: 2em;
+}
+
 .article-header h1 {
     text-align: center;
     color: $charcoal;
@@ -207,7 +216,9 @@ LAYOUT & GRID STYLES
 .archive article {
     position:relative;
     background: #fafafa;
-    padding: 1em; }
+    padding: 1em;
+    margin-bottom: 1em;
+}
 
 .blog .article-header img,
 .archive .article-header img {
@@ -217,12 +228,12 @@ LAYOUT & GRID STYLES
 #about, #contact, #news {
     text-align: center;
     padding: 1em;
-    margin-top: 1em;
+    margin: 2em 0;
     & a {
         position: relative;
         color: $charcoal;
         width: 80%;
-        font-size: 2.25em;
+        font-size: 2.15em;
         border-bottom: 5px solid rgba(255,255,255,.5);
         display: inline-block;
         transition: 1s;
@@ -252,22 +263,29 @@ LAYOUT & GRID STYLES
 }
 
 .latest-posts.large-12.columns {
-    padding: 1em 4em;
+    padding: 1em 3em;
     text-align: center;
     margin-bottom: 3em;
     h5 {
         display: inline-block;
-        padding: 0 0.5em 0 0;
+        padding: 0 0.5em;
     }
     h3 {
         font-weight: 100;
-        border-bottom: 1px solid $charcoal;
         display: inline-block;
         width: auto;
         margin: 0 0 0.5em 0;
     }
     p {
         margin-bottom: 0;
+    }
+    img {
+        border-radius: 50%;
+    }
+    h3::before,
+    h3::after {
+        content: "\2014";
+        margin: 0 10px;
     }
 }
 
@@ -347,10 +365,16 @@ a:focus + span  {
     margin: 1em auto;
 }
 
-.people-details h4 {
+.people-details {
+    h6 {
     display: inline-block;
-    padding: 0 0 0 .5em;
+    padding: 0;
+    }
+    img {
+    border-radius: 50%;
+    }
 }
+
 
 
 
@@ -365,7 +389,7 @@ Scroll to top button
     background-repeat: no-repeat;
     transform: rotate(270deg);
     margin: 0;
-    padding: 20px;
+    padding: 10px;
 	text-align:center;
 	position:fixed;
 	bottom:20px;
@@ -531,7 +555,12 @@ POSTS & CONTENT STYLES
 /* post meta */
 .byline {
 	color: $oil;
+    display: block;
 	time {}
+}
+
+.single .byline {
+    padding: 1em 0;
 }
 
 /* entry content */
@@ -665,6 +694,7 @@ COMMENT STYLES
 /* h3 comment title */
 #comments {
     font-weight: 300;
+    margin-bottom: 1em;
 
 	/* number of comments span */
 	span {}
@@ -751,7 +781,7 @@ COMMENT STYLES
 	.comment {
         background: white;
         border: none;
-        box-shadow: 1px 0px 2px #999;
+        box-shadow: 1px 1px 2px 1px #999;
     }
 	.children {}
 	.pingback {}

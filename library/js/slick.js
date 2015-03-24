@@ -2,7 +2,7 @@
 	'use strict';
 
     var popupSlide = $('.slider').slick({
-        infinite: true,
+        infinite: false,
         prevArrow: '.prev',
         nextArrow: '.next'
     });

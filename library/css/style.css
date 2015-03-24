@@ -5522,7 +5522,12 @@ a {
 
 .article-header a:focus,
 .entry-content a:focus,
-#sidebar1 a:focus {
+#sidebar1 a:focus,
+.article-header a:focus,
+#aside a:focus,
+.latest-posts a:focus,
+.comment-author a:focus,
+.comments-logged-in-as a:focus {
   padding-bottom: 3px;
   border-bottom: 2px solid #444; }
 
@@ -6919,6 +6924,13 @@ style a page via class
 /*********************
 LAYOUT & GRID STYLES
 *********************/
+.single-post .entry-content img {
+  width: 50%; }
+
+.large-12.columns.article-footer {
+  border-top: 1px solid #DDDDDD;
+  margin-top: 2em; }
+
 .article-header h1 {
   text-align: center;
   color: #555555;
@@ -6933,7 +6945,8 @@ LAYOUT & GRID STYLES
 .archive article {
   position: relative;
   background: #fafafa;
-  padding: 1em; }
+  padding: 1em;
+  margin-bottom: 1em; }
 
 .blog .article-header img,
 .archive .article-header img {
@@ -6942,12 +6955,12 @@ LAYOUT & GRID STYLES
 #about, #contact, #news {
   text-align: center;
   padding: 1em;
-  margin-top: 1em; }
+  margin: 2em 0; }
   #about a, #contact a, #news a {
     position: relative;
     color: #555555;
     width: 80%;
-    font-size: 2.25em;
+    font-size: 2.15em;
     border-bottom: 5px solid rgba(255, 255, 255, 0.5);
     display: inline-block;
     transition: 1s; }
@@ -6972,20 +6985,25 @@ LAYOUT & GRID STYLES
   background: pink; }
 
 .latest-posts.large-12.columns {
-  padding: 1em 4em;
+  padding: 1em 3em;
   text-align: center;
   margin-bottom: 3em; }
   .latest-posts.large-12.columns h5 {
     display: inline-block;
-    padding: 0 0.5em 0 0; }
+    padding: 0 0.5em; }
   .latest-posts.large-12.columns h3 {
     font-weight: 100;
-    border-bottom: 1px solid #555555;
     display: inline-block;
     width: auto;
     margin: 0 0 0.5em 0; }
   .latest-posts.large-12.columns p {
     margin-bottom: 0; }
+  .latest-posts.large-12.columns img {
+    border-radius: 50%; }
+  .latest-posts.large-12.columns h3::before,
+  .latest-posts.large-12.columns h3::after {
+    content: "\2014";
+    margin: 0 10px; }
 
 #sidebar1 {
   border-left: 1px solid #DDDDDD; }
@@ -7051,9 +7069,11 @@ a:focus + span {
   width: 80%;
   margin: 1em auto; }
 
-.people-details h4 {
+.people-details h6 {
   display: inline-block;
-  padding: 0 0 0 .5em; }
+  padding: 0; }
+.people-details img {
+  border-radius: 50%; }
 
 /*********************
 Scroll to top button
@@ -7065,7 +7085,7 @@ Scroll to top button
   background-repeat: no-repeat;
   transform: rotate(270deg);
   margin: 0;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   position: fixed;
   bottom: 20px;
@@ -7153,7 +7173,11 @@ POSTS & CONTENT STYLES
 /* style by tag (i.e. tag-news) */
 /* post meta */
 .byline {
-  color: #333333; }
+  color: #333333;
+  display: block; }
+
+.single .byline {
+  padding: 1em 0; }
 
 /* entry content */
 .entry-content {
@@ -7210,6 +7234,7 @@ COMMENT STYLES
 /* h3 comment title */
 #comments {
   font-weight: 300;
+  margin-bottom: 1em;
   /* number of comments span */ }
 
 #respond ul {
@@ -7252,7 +7277,7 @@ COMMENT STYLES
   .commentlist .comment {
     background: white;
     border: none;
-    box-shadow: 1px 0px 2px #999; }
+    box-shadow: 1px 1px 2px 1px #999; }
   .commentlist .vcard {
     margin-left: 50px; }
     .commentlist .vcard cite.fn {
