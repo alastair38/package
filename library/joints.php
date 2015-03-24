@@ -122,13 +122,13 @@ function joints_scripts_and_styles() {
     wp_enqueue_script( 'foundation-js', get_template_directory_uri() . '/bower_components/foundation/js/foundation.js', array( 'jquery' ), $theme_version, true );
 
     //adding joints script file in the footer
-    wp_enqueue_script( 'joints-js', get_template_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), $theme_version, true );
+    wp_enqueue_script( 'joints-js', get_template_directory_uri() . '/library/js/min/scripts-min.js', array( 'jquery' ), $theme_version, true );
 
     //adding cookies script file in the footer
     wp_enqueue_script( 'cookies-js', get_template_directory_uri() . '/library/js/cookies.js', array( 'jquery' ), $theme_version, true );
 
-    //adding accessible-modal script file in the footer
-    wp_enqueue_script( 'accessible-modal-js', get_template_directory_uri() . '/library/js/accessible-modal.js', array( 'jquery' ), $theme_version, true );
+    /*adding accessible-modal script file in the footer
+    wp_enqueue_script( 'accessible-modal-js', get_template_directory_uri() . '/library/js/accessible-modal.js', array( 'jquery' ), $theme_version, true );*/
 
       //adding slick.js cdn script file in the footer
     wp_enqueue_script( 'slick-js', 'http://cdn.jsdelivr.net/jquery.slick/1.4.1/slick.min.js', array( 'jquery' ), $theme_version, true );

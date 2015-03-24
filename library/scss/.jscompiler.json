@@ -1,0 +1,11 @@
+{
+	"outputs": [
+		{
+			"inputs": ["script.js"],
+			"output": "script.min.js",
+			"generateMap": true,
+			"mangle": true,
+			"isolate": false
+		}
+	]
+}

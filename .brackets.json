@@ -1,0 +1,16 @@
+{
+    "jscompiler": {
+        "outputs": [
+            {
+                "inputs": [
+                    "library/js/scripts.js",
+                    "library/js/accessible-modal.js"
+                ],
+                "output": "library/js/min/scripts-min.js",
+                "generateMap": true,
+                "mangle": true,
+                "isolate": false
+            }
+        ]
+    }
+}

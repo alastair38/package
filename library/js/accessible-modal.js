@@ -4,7 +4,7 @@
  License for Application
  ============================================
 
- This license is governed by United States copyright law, and with respect to matters
+ This license is governed by US copyright law, and with respect to matters
  of tort, contract, and other causes of action it is governed by North Carolina law,
  without regard to North Carolina choice of law provisions.  The forum for any dispute
  resolution shall be in Wake County, North Carolina.
