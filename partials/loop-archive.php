@@ -3,7 +3,7 @@
 	<article id="post-<?php the_ID(); ?>" <?php post_class(''); ?> role="article">
 
 		<header class="article-header">
-		    <a href="<?php the_permalink() ?>"><?php the_post_thumbnail('thumbnail', array('itemprop' => 'image')); ?></a>
+		    <?php the_post_thumbnail('thumbnail', array('itemprop' => 'image')); ?>
 			<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
 			</h2>
 		</header> <!-- end article header -->

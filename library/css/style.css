@@ -5527,7 +5527,8 @@ a {
 #aside a:focus,
 .latest-posts a:focus,
 .comment-author a:focus,
-.comments-logged-in-as a:focus {
+.comments-logged-in-as a:focus,
+.byline a:focus {
   padding-bottom: 3px;
   border-bottom: 2px solid #444; }
 
@@ -6721,7 +6722,7 @@ Stylesheet: Base/Small Stylesheet
 Be light and don't over style since everything here will be
 loaded by mobile devices. You want to keep it as minimal as
 possible. This is called at the top of the main stylsheet
-and will be used across all viewports.
+and will be used across all viewports. Testing compilation
 
 ******************************************************************/
 /*********************

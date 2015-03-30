@@ -238,7 +238,8 @@ $align-class-breakpoints:
     #aside a:focus,
     .latest-posts a:focus,
     .comment-author a:focus,
-    .comments-logged-in-as a:focus {
+    .comments-logged-in-as a:focus,
+    .byline a:focus {
         padding-bottom: 3px;
         border-bottom: 2px solid #444;
     }

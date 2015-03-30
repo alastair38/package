@@ -4,7 +4,9 @@
             {
                 "inputs": [
                     "library/js/scripts.js",
-                    "library/js/accessible-modal.js"
+                    "library/js/accessible-modal.js",
+                    "library/js/cookies.js",
+                    "library/js/slick.js"
                 ],
                 "output": "library/js/min/scripts-min.js",
                 "generateMap": true,
